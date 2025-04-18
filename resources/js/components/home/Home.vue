@@ -118,10 +118,10 @@ const logout = async () => {
 
       <h4>Categories List:</h4>
       <table cellpadding="5">
-        <thead>
+        <thead style="background-color: #33ff64; color: white;">
           <tr>
-            <th>SL</th>
-            <th>Category Name</th>
+            <th style="padding: 0 20px;">SL</th>
+            <th style="padding: 0 20px;">Category Name</th>
           </tr>
         </thead>
         <tbody>
@@ -161,18 +161,19 @@ const logout = async () => {
         </button>
       </div>
 
-      <h4>Product List</h4>
-      <table border="1" cellpadding="5">
-        <thead>
+      <h4>Product List:</h4>
+      <table cellpadding="5">
+        <thead style="background-color: #33ff64; color: white;">
           <tr>
-            <th>SL</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Category Name</th>
-            <th>Actions</th>
+            <th style="padding: 0 20px;">SL</th>
+            <th style="padding: 0 20px;">Name</th>
+            <th style="padding: 0 20px;">Price</th>
+            <th style="padding: 0 20px;">Quantity</th>
+            <th style="padding: 0 20px;">Category Name</th>
+            <th style="padding: 0 20px;">Actions</th>
           </tr>
         </thead>
+
         <tbody>
           <tr v-for="(product, index) in products" :key="product.id">
             <td>{{ index + 1 }}</td>
@@ -181,8 +182,10 @@ const logout = async () => {
             <td>{{ product.quantity }}</td>
             <td>{{ product.category.name }}</td>
             <td>
-              <button @click="editProduct(product)">Edit</button>
-              <button @click="deleteProduct(product.id)">Delete</button>
+              <button class="btn btn-success" @click="editProduct(product)">Edit</button>
+              <!-- <button @click="deleteProduct(product.id)">Delete</button> -->
+              <button class="btn btn-danger" @click="deleteProduct(product.id)">Delete</button>
+
             </td>
           </tr>
         </tbody>

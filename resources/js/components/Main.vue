@@ -18,7 +18,7 @@ function goToLogin() {
   <div>
     <h1 style="text-align: center">Mini Inventory System</h1>
 
-    <div style="display: flex; justify-content: flex-end; gap: 10px">
+    <div style="display: flex; justify-content: center; margin-top: 50px; gap: 10px">
    <router-link to="/login">
   <button
     style="
