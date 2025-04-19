@@ -46,14 +46,25 @@ const submitCategory = async () => {
 // Submit new product
 const submitProduct = async () => {
   try {
-    await api.post("/products", newProduct.value);
-    alert("Product created successfully!");
-    newProduct.value = { name: "", price: "", quantity: "", category_id: "" };
+    if (newProduct.value.id) {
+      // Update product
+      await api.put(`/products/${newProduct.value.id}`, newProduct.value);
+      alert("Product updated successfully!");
+    } else {
+      // Create new product
+      await api.post("/products", newProduct.value);
+      alert("Product created successfully!");
+    }
+
+    // Reset form and refresh product list
+    newProduct.value = { id: null, name: "", price: "", quantity: "", category_id: "" };
     fetchProducts();
   } catch (error) {
-    alert("Error creating product");
+    alert("Error submitting product");
+    console.error(error);
   }
 };
+
 
 const editProduct = (product) => {
   showProductForm.value = true;

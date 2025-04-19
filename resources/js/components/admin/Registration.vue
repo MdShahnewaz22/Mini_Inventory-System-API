@@ -1,7 +1,9 @@
-
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import api from "../../api/axios";
+
+const router = useRouter();
 const username = ref('');
 const email = ref('');
 const password = ref('');
@@ -21,12 +23,11 @@ const handleRegister = async () => {
       password_confirmation: confirmPassword.value
     });
 
-    // console.log('Registration successful:', response.data);
     alert('Registration successful!');
-    // Optional: redirect to login or dashboard
+    router.push('/login'); // Redirect to login route
   } catch (error) {
-    // console.error('Registration failed:', error.response?.data || error.message);
     alert('Registration failed. Check console for details.');
+    console.error('Registration failed:', error.response?.data || error.message);
   }
 };
 </script>
@@ -48,7 +49,7 @@ const handleRegister = async () => {
         <input v-model="password" type="password" id="password" required />
       </div>
       <div class="input-group">
-        <label for="">Confirm Password</label>
+        <label for="confirmPassword">Confirm Password</label>
         <input v-model="confirmPassword" type="password" id="confirmPassword" required />
       </div>
       <div class="input-group">
@@ -57,7 +58,6 @@ const handleRegister = async () => {
     </form>
   </div>
 </template>
-
 
 <style scoped>
 body {
